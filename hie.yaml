@@ -1,0 +1,7 @@
+cradle:
+  cabal:
+    - path: "src"
+      component: "lib:bash-parser"
+
+    - path: "test"
+      component: "bash-parser:test:bash-parser-test"

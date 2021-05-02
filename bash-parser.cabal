@@ -1,0 +1,68 @@
+cabal-version:      2.4
+name:               bash-parser
+version:            0.1.0.0
+
+-- A short (one-line) description of the package.
+-- synopsis:
+
+-- A longer description of the package.
+-- description:
+
+-- A URL where users can report bugs.
+-- bug-reports:
+
+-- The license under which the package is released.
+-- license:
+author:             Takayuki Uchida
+maintainer:         jacobitebeerlove@gmail.com
+
+-- A copyright notice.
+-- copyright:
+-- category:
+extra-source-files: CHANGELOG.md
+
+common deps
+    build-depends:
+        base ^>=4.14.1.0
+      , attoparsec
+      , containers
+      , text
+    ghc-options:
+         -Wall
+    default-language:
+         Haskell2010
+
+
+common test-deps
+    build-depends:
+        hspec
+      , hspec-contrib
+      , HUnit
+    build-tool-depends:
+        hspec-discover:hspec-discover
+
+
+
+library
+    import:
+        deps
+    exposed-modules:
+        BashParser
+    hs-source-dirs:
+        src
+
+
+test-suite bash-parser-test
+    import:
+        deps
+      , test-deps
+    type:
+        exitcode-stdio-1.0
+    main-is:
+        Spec.hs
+    hs-source-dirs:
+        test
+    other-modules:
+        BashParserSpec
+    build-depends:
+        bash-parser
